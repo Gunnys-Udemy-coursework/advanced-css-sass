@@ -7,22 +7,30 @@ Medium green: #55c57a
 Dark green: #28b485
 */
 
-* {
+*,
+*::after,
+*::before {
     /*Total page reset to eliminate inherited padding or margin properties */
     margin: 0;
     padding:0;
-    /* set to border-box to eliminate adding unwanted padding */
-    box-sizing: border-box;
+    /*All elements within will inherit from the body box-sizing*/
+    box-sizing: inherit;
 }
 
+html {
+    /*Setting a global font size for rem use elsewhere*/
+    font-size: 62.5%;
+}
 body {
     /* Font settings done in the body and applies to all child elements of the body */
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /*font-size: 16px;*/
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+    /* set to border-box to eliminate adding unwanted padding */
+    box-sizing: border-box;
 }
 
 .header {
@@ -39,14 +47,14 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
 /*Notice how animation can be used for other than page load
@@ -55,7 +63,7 @@ body {
     }
 */
 
-.text-box {
+.header__text-box {
     position: absolute;
     /* In relation to the parent element, */
     top: 40%;
@@ -72,14 +80,14 @@ body {
     /*Hides the 'back' of a given element*/
     backface-visibility: hidden;
     /*Providing space between self and button below*/
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
-.heading-primary-main{
+.heading-primary--main{
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     /*See keyframes by same name */
     animation-name: moveInLeft;
     /*Length of animation*/
@@ -97,11 +105,11 @@ body {
 
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
     font-size: 20px;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.74rem;
     /*Notice combined attributes versus separate lines, as seen for heading-primary-main*/
     animation: moveInRight 3s ease-in;
 }
@@ -111,12 +119,12 @@ body {
         /*0 = fully opaque*/
         opacity: 0;
         /*Negative value = left of coded position*/
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80%{
         /*Positive value = right of coded position*/
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     100%{
@@ -132,12 +140,12 @@ body {
         /*0 = fully opaque*/
         opacity: 0;
         /*Positive value = right of coded position*/
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80%{
         /*Negative value = left of coded position*/
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100%{
@@ -153,7 +161,7 @@ body {
         /*0 = fully opaque*/
         opacity: 0;
         /*Positive value = below coded position*/
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100%{
@@ -166,10 +174,10 @@ body {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;
     /*Rounds the edges of the button*/
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
     /*For the ::after, found below*/
     position: relative;
@@ -179,15 +187,15 @@ body {
     /*Negative value moves the element up*/
     transform: translateY(-3px);
     /*Shadow effect with 0 offset-x, 10 pixels offset-y, 20 pixel blur radius, color black with 20% opacity*/
-    box-shadow: 0 10px 20px rgba(0,0,0 .2);
+    box-shadow: 0 1rem 2rem rgba(0,0,0 .2);
 }
 
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0,0,0 .2);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0 .2);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -199,7 +207,7 @@ body {
     /*These values will make it match the intended element; height, width, border-radius*/
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top:0;
     left: 0;
@@ -208,7 +216,7 @@ body {
     transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -217,7 +225,7 @@ body {
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom 2s ease-out .75s;
     /*Applies styles of 0% before the animation starts*/
     animation-fill-mode: backwards;
