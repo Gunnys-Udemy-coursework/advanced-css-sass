@@ -1,8 +1,224 @@
+
 /*
 COLORS:
 
 Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
-
 */
+
+* {
+    /*Total page reset to eliminate inherited padding or margin properties */
+    margin: 0;
+    padding:0;
+    /* set to border-box to eliminate adding unwanted padding */
+    box-sizing: border-box;
+}
+
+body {
+    /* Font settings done in the body and applies to all child elements of the body */
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    /* vh = viewport height */
+    height: 95vh;
+    background-image: linear-gradient(
+            to right bottom,
+            rgba(126, 213, 111, 0.8),
+            rgba(40, 180, 131, 0.8)),
+    url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+/*Notice how animation can be used for other than page load
+    .logo:hover {
+        animation: moveInRight 3s ease-in;
+    }
+*/
+
+.text-box {
+    position: absolute;
+    /* In relation to the parent element, */
+    top: 40%;
+    left: 50%;
+    /* In relation to the element itself, */
+    transform: translate(-50%, -50%);
+    /*Button element is treated as text, this aligns it in center*/
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    /*Hides the 'back' of a given element*/
+    backface-visibility: hidden;
+    /*Providing space between self and button below*/
+    margin-bottom: 60px;
+}
+
+.heading-primary-main{
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    /*See keyframes by same name */
+    animation-name: moveInLeft;
+    /*Length of animation*/
+    animation-duration: 3s;
+    /*Speed of the assigned parameters*/
+    animation-timing-function: ease-in;
+
+/* How many times the animation runs
+    animation-iteration-count: 3;
+*/
+
+/* How long of a delay before animation starts
+    animation-delay: 3s;
+*/
+
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    /*Notice combined attributes versus separate lines, as seen for heading-primary-main*/
+    animation: moveInRight 3s ease-in;
+}
+
+@keyframes moveInLeft {
+    0% {
+        /*0 = fully opaque*/
+        opacity: 0;
+        /*Negative value = left of coded position*/
+        transform: translateX(-100px);
+    }
+
+    80%{
+        /*Positive value = right of coded position*/
+        transform: translateX(10px);
+    }
+
+    100%{
+        /*Fully visible*/
+        opacity: 1;
+        /*Ending position of 0 = coded position*/
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        /*0 = fully opaque*/
+        opacity: 0;
+        /*Positive value = right of coded position*/
+        transform: translateX(100px);
+    }
+
+    80%{
+        /*Negative value = left of coded position*/
+        transform: translateX(-10px);
+    }
+
+    100%{
+        /*Fully visible*/
+        opacity: 1;
+        /*Ending position of 0 = coded position*/
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom{
+    0% {
+        /*0 = fully opaque*/
+        opacity: 0;
+        /*Positive value = below coded position*/
+        transform: translateY(30px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    /*Rounds the edges of the button*/
+    border-radius: 100px;
+    transition: all .2s;
+    /*For the ::after, found below*/
+    position: relative;
+}
+
+.btn:hover {
+    /*Negative value moves the element up*/
+    transform: translateY(-3px);
+    /*Shadow effect with 0 offset-x, 10 pixels offset-y, 20 pixel blur radius, color black with 20% opacity*/
+    box-shadow: 0 10px 20px rgba(0,0,0 .2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0 .2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    /*content and display are required or it will not show*/
+    content: "";
+    display: inline-block;
+    /*These values will make it match the intended element; height, width, border-radius*/
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top:0;
+    left: 0;
+    /*Moves it behind the intended element*/
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /*Applies styles of 0% before the animation starts*/
+    animation-fill-mode: backwards;
+}
