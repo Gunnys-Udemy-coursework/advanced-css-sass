@@ -1,16 +1,23 @@
+//Color palette
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+$color-grey-dark: #777;
+
 *,
 *::after,
 *::before {
   /*Total page reset to eliminate inherited padding or margin properties */
   margin: 0;
-  padding: 0;
+  padding:0;
   /*All elements within will inherit from the body box-sizing*/
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   /*Setting a global font size for rem use elsewhere*/
-  font-size: 62.5%; }
-
+  font-size: 62.5%;
+}
 body {
   /* Font settings done in the body and applies to all child elements of the body */
   font-family: "Lato", sans-serif;
@@ -20,30 +27,39 @@ body {
   color: #777;
   padding: 3rem;
   /* set to border-box to eliminate adding unwanted padding */
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header {
   /* vh = viewport height */
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(
+                  to right bottom,
+                  rgba($color-primary-light, 0.8),
+                  rgba($color-primary-dark, 0.8)),
+  url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
 
 .header__logo-box {
   position: absolute;
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
-  height: 3.5rem; }
+  height: 3.5rem;
+}
 
 /*Notice how animation can be used for other than page load
     .logo:hover {
         animation: moveInRight 3s ease-in;
     }
 */
+
 .header__text-box {
   position: absolute;
   /* In relation to the parent element, */
@@ -52,7 +68,8 @@ body {
   /* In relation to the element itself, */
   transform: translate(-50%, -50%);
   /*Button element is treated as text, this aligns it in center*/
-  text-align: center; }
+  text-align: center;
+}
 
 .heading-primary {
   color: #fff;
@@ -60,9 +77,10 @@ body {
   /*Hides the 'back' of a given element*/
   backface-visibility: hidden;
   /*Providing space between self and button below*/
-  margin-bottom: 6rem; }
+  margin-bottom: 6rem;
+}
 
-.heading-primary--main {
+.heading-primary--main{
   display: block;
   font-size: 6rem;
   font-weight: 400;
@@ -73,12 +91,16 @@ body {
   animation-duration: 3s;
   /*Speed of the assigned parameters*/
   animation-timing-function: ease-in;
+
   /* How many times the animation runs
       animation-iteration-count: 3;
   */
+
   /* How long of a delay before animation starts
       animation-delay: 3s;
-  */ }
+  */
+
+}
 
 .heading-primary--sub {
   display: block;
@@ -86,47 +108,64 @@ body {
   font-weight: 700;
   letter-spacing: 1.74rem;
   /*Notice combined attributes versus separate lines, as seen for heading-primary-main*/
-  animation: moveInRight 3s ease-in; }
+  animation: moveInRight 3s ease-in;
+}
 
 @keyframes moveInLeft {
   0% {
     /*0 = fully opaque*/
     opacity: 0;
     /*Negative value = left of coded position*/
-    transform: translateX(-10rem); }
-  80% {
+    transform: translateX(-10rem);
+  }
+
+  80%{
     /*Positive value = right of coded position*/
-    transform: translateX(1rem); }
-  100% {
+    transform: translateX(1rem);
+  }
+
+  100%{
     /*Fully visible*/
     opacity: 1;
     /*Ending position of 0 = coded position*/
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     /*0 = fully opaque*/
     opacity: 0;
     /*Positive value = right of coded position*/
-    transform: translateX(10rem); }
-  80% {
+    transform: translateX(10rem);
+  }
+
+  80%{
     /*Negative value = left of coded position*/
-    transform: translateX(-1rem); }
-  100% {
+    transform: translateX(-1rem);
+  }
+
+  100%{
     /*Fully visible*/
     opacity: 1;
     /*Ending position of 0 = coded position*/
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
-@keyframes moveInBottom {
+@keyframes moveInBottom{
   0% {
     /*0 = fully opaque*/
     opacity: 0;
     /*Positive value = below coded position*/
-    transform: translateY(3rem); }
-  100% {
+    transform: translateY(3rem);
+  }
+
+  100%{
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 .btn:link,
 .btn:visited {
@@ -138,21 +177,25 @@ body {
   border-radius: 10rem;
   transition: all .2s;
   /*For the ::after, found below*/
-  position: relative; }
+  position: relative;
+}
 
 .btn:hover {
   /*Negative value moves the element up*/
   transform: translateY(-3px);
   /*Shadow effect with 0 offset-x, 10 pixels offset-y, 20 pixel blur radius, color black with 20% opacity*/
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1rem 2rem rgba(0,0,0, .2);
+}
 
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .2);
+}
 
 .btn--white {
   background-color: #fff;
-  color: #777; }
+  color: $color-grey-dark;
+}
 
 .btn::after {
   /*content and display are required or it will not show*/
@@ -163,20 +206,24 @@ body {
   width: 100%;
   border-radius: 10rem;
   position: absolute;
-  top: 0;
+  top:0;
   left: 0;
   /*Moves it behind the intended element*/
   z-index: -1;
-  transition: all .4s; }
+  transition: all .4s;
+}
 
 .btn--white::after {
-  background-color: #fff; }
+  background-color: #fff;
+}
 
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
   animation: moveInBottom 2s ease-out .75s;
   /*Applies styles of 0% before the animation starts*/
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}

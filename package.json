@@ -1,0 +1,23 @@
+{
+  "name": "advanced-css-sass",
+  "version": "1.0.0",
+  "description": "Udemy course and personal initiation into SASS",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass Natours/starter/sass/main.scss Natours/starter/css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gunnys-Udemy-coursework/advanced-css-sass.git"
+  },
+  "author": "The Gunny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gunnys-Udemy-coursework/advanced-css-sass/issues"
+  },
+  "homepage": "https://github.com/Gunnys-Udemy-coursework/advanced-css-sass#readme",
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  },
+  "dependencies": {}
+}
