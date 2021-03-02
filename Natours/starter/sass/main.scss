@@ -45,16 +45,27 @@ body {
   background-position: top;
   position: relative;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
 
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
+  &__logo-box{
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
 
-.header__logo {
-  height: 3.5rem;
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    /* In relation to the parent element, */
+    top: 40%;
+    left: 50%;
+    /* In relation to the element itself, */
+    transform: translate(-50%, -50%);
+    /*Button element is treated as text, this aligns it in center*/
+    text-align: center;
+  }
 }
 
 /*Notice how animation can be used for other than page load
@@ -63,17 +74,6 @@ body {
     }
 */
 
-.header__text-box {
-  position: absolute;
-  /* In relation to the parent element, */
-  top: 40%;
-  left: 50%;
-  /* In relation to the element itself, */
-  transform: translate(-50%, -50%);
-  /*Button element is treated as text, this aligns it in center*/
-  text-align: center;
-}
-
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
@@ -81,37 +81,37 @@ body {
   backface-visibility: hidden;
   /*Providing space between self and button below*/
   margin-bottom: 6rem;
-}
 
-.heading-primary--main{
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  /*See keyframes by same name */
-  animation-name: moveInLeft;
-  /*Length of animation*/
-  animation-duration: 3s;
-  /*Speed of the assigned parameters*/
-  animation-timing-function: ease-in;
+  &--main{
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /*See keyframes by same name */
+    animation-name: moveInLeft;
+    /*Length of animation*/
+    animation-duration: 3s;
+    /*Speed of the assigned parameters*/
+    animation-timing-function: ease-in;
 
-  /* How many times the animation runs
-      animation-iteration-count: 3;
-  */
+    /* How many times the animation runs
+        animation-iteration-count: 3;
+    */
 
-  /* How long of a delay before animation starts
-      animation-delay: 3s;
-  */
+    /* How long of a delay before animation starts
+        animation-delay: 3s;
+    */
 
-}
+  }
 
-.heading-primary--sub {
-  display: block;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1.74rem;
-  /*Notice combined attributes versus separate lines, as seen for heading-primary-main*/
-  animation: moveInRight 3s ease-in;
+  &--sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    /*Notice combined attributes versus separate lines, as seen for heading-primary-main*/
+    animation: moveInRight 3s ease-in;
+  }
 }
 
 @keyframes moveInLeft {
@@ -170,63 +170,65 @@ body {
   }
 }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  /*Rounds the edges of the button*/
-  border-radius: 10rem;
-  transition: all .2s;
-  /*For the ::after, found below*/
-  position: relative;
-}
+.btn{
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /*Rounds the edges of the button*/
+    border-radius: 10rem;
+    transition: all .2s;
+    /*For the ::after, found below*/
+    position: relative;
+  }
 
-.btn:hover {
-  /*Negative value moves the element up*/
-  transform: translateY(-3px);
-  /*Shadow effect with 0 offset-x, 10 pixels offset-y, 20 pixel blur radius, color black with 20% opacity*/
-  box-shadow: 0 1rem 2rem rgba($color-black, .2);
-}
+  &:hover {
+    /*Negative value moves the element up*/
+    transform: translateY(-3px);
+    /*Shadow effect with 0 offset-x, 10 pixels offset-y, 20 pixel blur radius, color black with 20% opacity*/
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
 
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 .5rem 1rem rgba($color-black, .2);
-}
+      &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+  }
 
-.btn--white {
-  background-color: $color-white;
-  color: $color-grey-dark;
-}
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
 
-.btn::after {
-  /*content and display are required or it will not show*/
-  content: "";
-  display: inline-block;
-  /*These values will make it match the intended element; height, width, border-radius*/
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top:0;
-  left: 0;
-  /*Moves it behind the intended element*/
-  z-index: -1;
-  transition: all .4s;
-}
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
 
-.btn--white::after {
-  background-color: $color-white;
-}
+      &::after {
+        background-color: $color-white;
+      }
+  }
 
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
+  .btn::after {
+    /*content and display are required or it will not show*/
+    content: "";
+    display: inline-block;
+    /*These values will make it match the intended element; height, width, border-radius*/
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top:0;
+    left: 0;
+    /*Moves it behind the intended element*/
+    z-index: -1;
+    transition: all .4s;
+  }
 
-.btn--animated {
-  animation: moveInBottom 2s ease-out .75s;
-  /*Applies styles of 0% before the animation starts*/
-  animation-fill-mode: backwards;
+  .btn--animated {
+    animation: moveInBottom 2s ease-out .75s;
+    /*Applies styles of 0% before the animation starts*/
+    animation-fill-mode: backwards;
+  }
 }
