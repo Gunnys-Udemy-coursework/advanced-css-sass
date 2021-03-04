@@ -1,0 +1,62 @@
+.btn{
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /*Rounds the edges of the button*/
+    border-radius: 10rem;
+    transition: all .2s;
+    /*For the ::after, found below*/
+    position: relative;
+  }
+
+  &:hover {
+    /*Negative value moves the element up*/
+    transform: translateY(-3px);
+    /*Shadow effect with 0 offset-x, 10 pixels offset-y, 20 pixel blur radius, color black with 20% opacity*/
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  .btn::after {
+    /*content and display are required or it will not show*/
+    content: "";
+    display: inline-block;
+    /*These values will make it match the intended element; height, width, border-radius*/
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top:0;
+    left: 0;
+    /*Moves it behind the intended element*/
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  .btn--animated {
+    animation: moveInBottom 2s ease-out .75s;
+    /*Applies styles of 0% before the animation starts*/
+    animation-fill-mode: backwards;
+  }
+}

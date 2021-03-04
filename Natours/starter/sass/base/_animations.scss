@@ -1,0 +1,55 @@
+@keyframes moveInLeft {
+  0% {
+    /*0 = fully opaque*/
+    opacity: 0;
+    /*Negative value = left of coded position*/
+    transform: translateX(-10rem);
+  }
+
+  80%{
+    /*Positive value = right of coded position*/
+    transform: translateX(1rem);
+  }
+
+  100%{
+    /*Fully visible*/
+    opacity: 1;
+    /*Ending position of 0 = coded position*/
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    /*0 = fully opaque*/
+    opacity: 0;
+    /*Positive value = right of coded position*/
+    transform: translateX(10rem);
+  }
+
+  80%{
+    /*Negative value = left of coded position*/
+    transform: translateX(-1rem);
+  }
+
+  100%{
+    /*Fully visible*/
+    opacity: 1;
+    /*Ending position of 0 = coded position*/
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom{
+  0% {
+    /*0 = fully opaque*/
+    opacity: 0;
+    /*Positive value = below coded position*/
+    transform: translateY(3rem);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translate(0);
+  }
+}

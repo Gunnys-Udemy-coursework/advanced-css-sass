@@ -1,0 +1,18 @@
+*,
+*::after,
+*::before {
+  /*Total page reset to eliminate inherited padding or margin properties */
+  margin: 0;
+  padding:0;
+  /*All elements within will inherit from the body box-sizing*/
+  box-sizing: inherit;
+}
+
+html {
+  /*Setting a global font size for rem use elsewhere; what constitutes 1 rem*/
+  font-size: 62.5%;
+}
+body {
+  /* set to border-box to eliminate adding unwanted padding */
+  box-sizing: border-box;
+}
